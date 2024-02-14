@@ -3,13 +3,20 @@
     margin-right: 2px;
     background-color: blue;
 }
+.bar.red {
+    background-color: red;
+}
+
+.bar.green {
+    background-color: green;
+}
 #visualizer{
     display: flex;
 }
 #sorting{
     display: flex;
-    
 }
+
 
 /* only for main page */
 #bubble{
