@@ -6,3 +6,13 @@
 #visualizer{
     display: flex;
 }
+#sorting{
+    display: flex;
+    
+}
+
+/* only for main page */
+#bubble{
+    height: 45px;
+    border-radius: 10px;
+}
