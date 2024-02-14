@@ -29,13 +29,13 @@ function bubblesort(){
     }
 }
 
-// Create a new button
+
 var sortButton = document.createElement('button');
 sortButton.id = 'sort';
 sortButton.innerHTML = 'Sort';
 document.body.appendChild(sortButton);
 
-// Add event listener to the new button
+
 document.getElementById('sort').addEventListener('click', function() {
     var data = document.getElementById('data').value.split(',').map(Number);
     bubbleSort(data);
