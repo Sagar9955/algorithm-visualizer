@@ -16,6 +16,9 @@
 #sorting{
     display: flex;
 }
+#stepDiv{
+    display: flex;
+}
 
 
 /* only for main page */
