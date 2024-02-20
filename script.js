@@ -13,7 +13,7 @@ function display(data) {
     visualizer.innerHTML = '';
     for (var i = 0; i < data.length; i++) {
         var bar = document.createElement('div');
-        bar.style.height = data[i] + 'px';
+        bar.style.height = data[i]*5 + 'px';
         bar.classList.add('bar');
         visualizer.appendChild(bar);
     }
