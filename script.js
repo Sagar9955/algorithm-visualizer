@@ -13,12 +13,27 @@ function display(data) {
     visualizer.innerHTML = '';
     for (var i = 0; i < data.length; i++) {
         var bar = document.createElement('div');
-        bar.style.height = data[i]*5 + 'px';
+        bar.style.height = data[i] + 'px';
         bar.classList.add('bar');
         visualizer.appendChild(bar);
     }
     
 }
+
+function displaypass(data) {
+
+    var sorting = document.getElementById('sorting');
+    visualizer.innerHTML = '';
+    for (var i = 0; i < data.length; i++) {
+        var bar = document.createElement('div');
+        bar.style.height = data[i] + 'px';
+        bar.classList.add('bar');
+        sorting.appendChild(bar);
+    }
+    
+}
+
+
 async function bubblesort(data) {
     for(let i = data.length; i >= 1; i--) {
         for(let j = 1; j <= i; j++) {
@@ -29,8 +44,12 @@ async function bubblesort(data) {
             }
             }
             console.log(data);
-                display(data, 'sorting');
+            var dat=data;
+            
+                display(data, 'visualizer');
                 await new Promise(resolve => setTimeout(resolve, 100)); // delay of 100ms
+                displaypass(data,'sorting');
+                await new Promise(resolve => setTimeout(resolve, 100));
             }
         }
     
