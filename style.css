@@ -1,7 +1,7 @@
 .bar {
     width: 20px;
     margin-right: 2px;
-    background-color: blue;
+    background-color:blue;
 }
 .bar.red {
     background-color: red;
