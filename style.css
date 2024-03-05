@@ -1,7 +1,10 @@
+body{
+    background-color: #4D4861;
+}
 .bar {
     width: 20px;
     margin-right: 2px;
-    background-color:blue;
+    background-color: #F7C4A5;
 }
 .bar.red {
     background-color: red;
@@ -12,6 +15,23 @@
 }
 #visualizer{
     display: flex;
+    padding-left: 510px;
+    margin-top: 10px;
+}
+.pass{
+    padding-left: 500px;
+    margin: 10px;
+}
+#controls{
+    padding-left: 500px;
+}
+#sort{
+    margin-top: 25px;
+    margin-left: 570px;
+}
+#ide{
+    height: 200px;
+    width: 900px;
 }
 
 

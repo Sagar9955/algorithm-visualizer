@@ -16,17 +16,16 @@ function display(data) {
     }
 }
 
-function displaypass(data) {
+function displaypass(data,passnumber) {
     var container = document.getElementById('container');
     container.style.display ='flex';
     container.style.flexDirection='column';
     var pass=document.createElement('div');
-        pass.classList.add('pass');
-        pass.style.display='flex';
-        pass.style.flexDirection='row';
-    var passnum=document.createTextNode('Pass' + passnumber);
+    pass.classList.add('pass');
+    pass.style.display='flex';
+    pass.style.flexDirection='row';
+    var passnum=document.createTextNode('Pass' +passnumber);
     pass.appendChild(passnum);
-    // sorting.innerHTML = '';
     for (var i = 0; i < data.length; i++) {
         var bar = document.createElement('div');
         bar.style.height = data[i]*10 + 'px';
@@ -50,7 +49,7 @@ async function bubblesort(data) {
         let dat=data;
         display(data);
         await new Promise(resolve => setTimeout(resolve, 2000));
-        displaypass(dat,data.length-i +1);
+        displaypass(dat,data.length - i +1);
         // await new Promise(resolve => setTimeout(resolve, 100));
     }
 }
