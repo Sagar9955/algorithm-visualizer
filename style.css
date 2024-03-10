@@ -6,11 +6,15 @@ body{
     margin-right: 2px;
     background-color: #F7C4A5;
 }
-.bar.red {
+.bar-original {
+    background-color: blue;
+}
+
+.bar-changed {
     background-color: red;
 }
 
-.bar.green {
+.bar-swapped {
     background-color: green;
 }
 #visualizer{
