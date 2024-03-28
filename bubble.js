@@ -61,9 +61,10 @@ async function bubblesort(data) {
         console.log(data);
         let dat=data;
         display(data);
+        
         await new Promise(resolve => setTimeout(resolve, speed));
         displaypass(dat,data.length - i +1);
-        // await new Promise(resolve => setTimeout(resolve, 100));
+        
     }
 }
 

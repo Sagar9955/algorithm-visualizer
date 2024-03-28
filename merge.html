@@ -1,21 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div id="controls">
-        <input type="text" id="data" placeholder="Enter data">
-        <button id="display">Display</button>
-
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="heading">
+      <h1>Bubble Sort</h1>
     </div>
-    
+    <div id="controls">
+      <input type="text" id="data" placeholder="Enter data" />
+      <div id="controller">
+        <button id="display">Display</button>
+        <button id="sort">Sort</button>
+        <label for="height-adjust">Height</label>
+        <input type="range" id="height-adjust" min="10" max="100" />
+        <label for="speed-adjust">Speed</label>
+        <input type="range" id="speed-adjust" min="1000" max="10000" />
+      </div>
+    </div>
     <div id="visualizer"></div>
-    <button id="sort">Sort</button>
-    <div id="sorting"></div>
-    <script src="script2.js"></script>
-</body>
+    <div id="container"></div>
+    <div id="information">
+      <h4>Bubble Sort</h4>
+      <p>
+        Bubble Sort is a simple yet effective sorting algorithm. Here’s a
+        detailed explanation: How it Works: Bubble Sort works by repeatedly
+        stepping through the list, compares adjacent elements, and swaps them if
+        they are in the wrong order. The pass through the list is repeated until
+        the list is sorted. The algorithm gets its name from the way smaller
+        elements “bubble” to the top of the list. Algorithm: In Bubble Sort
+        algorithm, we traverse from left and compare adjacent elements and the
+        higher one is placed at right side. In this way, the largest element is
+        moved to the rightmost end at first. This process is then continued to
+        find the second largest and place it and so on until the data is sorted.
+      </p>
+      <h4>Complexity</h4>
+      <p>Time Complexity:</p>
+
+      <li>
+        Best Case: The best case occurs when the array is already sorted. In
+        this case, the time complexity is O(N), where N is the number of
+        elements in the array.
+      </li>
+      <li>
+        Worst Case: The worst case occurs when the array is sorted in reverse
+        order. In this case, the time complexity is O(N²).
+      </li>
+      <li>
+        Average Case: On average, Bubble Sort has a time complexity of O(N²),
+        regardless of the arrangement of elements in the input array.
+      </li>
+      <p>Space Complexity:</p>
+      <p>
+        Bubble Sort is an in-place sorting algorithm, meaning it doesn’t require
+        additional memory to perform the sorting. Hence, its space complexity is
+        O(1).
+      </p>
+      <h4>Advantages</h4>
+      <li>Bubble sort is easy to understand and implement.</li>
+      <li>It does not require any additional memory space.</li>
+      <li>
+        It is a stable sorting algorithm, meaning that elements with the same
+        key value maintain their relative order in the sorted output
+      </li>
+      <h4>Disadvantaged:</h4>
+      <li>
+        Bubble sort has a time complexity of O(n²) which makes it very slow for
+        large data sets.
+      </li>
+      <li>
+        Bubble sort is a comparison-based sorting algorithm, which means that it
+        requires a comparison operator to determine the relative order of
+        elements in the input data set. It can limit the efficiency of the
+        algorithm in certain cases.
+      </li>
+    </div>
+    <div
+      id="ide"
+      data-pym-src="https://www.jdoodle.com/embed/v0/2IhG?stdin=1&arg=0"
+    ></div>
+    <script src="merge.js"></script>
+    <script
+      src="https://www.jdoodle.com/assets/jdoodle-pym.min.js"
+      type="text/javascript"
+    ></script>
+  </body>
 </html>
