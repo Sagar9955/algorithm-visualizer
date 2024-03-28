@@ -1,0 +1,4 @@
+.app-component-container {
+  display: flex;
+  position: relative;
+}

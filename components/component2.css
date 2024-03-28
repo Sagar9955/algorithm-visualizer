@@ -1,0 +1,7 @@
+.component2-container {
+  display: flex;
+  position: relative;
+}
+.component2-text {
+  text-transform: uppercase;
+}

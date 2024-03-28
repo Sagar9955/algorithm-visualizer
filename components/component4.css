@@ -1,0 +1,14 @@
+.component4-container {
+  display: flex;
+  position: relative;
+}
+.component4-root-class-name {
+  top: 2px;
+  flex: 1;
+  left: var(--dl-space-space-twounits);
+  right: var(--dl-space-space-twounits);
+  width: 1000px;
+  height: 200px;
+  position: static;
+  align-self: center;
+}
