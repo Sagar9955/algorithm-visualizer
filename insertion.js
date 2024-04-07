@@ -54,29 +54,42 @@ function displaypass(data, passnumber) {
     });
 }
 
-async function insertionsort(data) {
-    // Display the initial state of the array as the first pass
-    let dat = data.slice();
-    await displaypass(dat, 0);
-
+async function insertionsort() {
+    let bars = document.querySelectorAll(".bar");
+    let dat = data.slice(); // Copy the initial data array
+    displaypass(dat, 0); // Display the initial state of the array
     for(let i = 1; i < data.length; i++) {
         let key = data[i];
+        let keyHeight = bars[i].style.height;
+        let keyContent = bars[i].textContent;
+        bars[i].style.backgroundColor = "red";
         let j = i - 1;
-        while(j >= 0 && data[j] > key) {
-            data[j + 1] = data[j];
-            j = j - 1;
+
+        await new Promise(resolve =>
+            setTimeout(() => {
+                while(j >= 0 && data[j] > key) {
+                    bars[j].style.backgroundColor = "blue";
+                    data[j + 1] = data[j];
+                    bars[j + 1].style.height = bars[j].style.height;
+                    bars[j + 1].textContent = bars[j].textContent;
+                    j = j - 1;
+                }
+                data[j + 1] = key;
+                bars[j + 1].style.height = keyHeight;
+                bars[j + 1].textContent = keyContent;
+                resolve();
+            }, speed)
+        );
+
+        for(let k = 0; k <= i; k++) {
+            bars[k].style.backgroundColor = "green";
         }
-        data[j + 1] = key;
-        console.log(data);
-        dat = data.slice();
-        display(data);
-        // Call displaypass at the end of each iteration
-        await displaypass(dat, i);
+        bars = document.querySelectorAll(".bar"); // Update the bars after each pass
+        dat = data.slice(); // Copy the data array
+        displaypass(dat, i); // Display the pass
     }
 }
 
-
-
 document.getElementById('sort').addEventListener('click', async function() {
-    await insertionsort(data);
+    await insertionsort();
 });

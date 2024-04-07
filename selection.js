@@ -49,28 +49,53 @@ function displaypass(data, passnumber) {
     }
 }
 
-async function selectionSort(data) {
+async function selectionSort() {
+    let bars = document.querySelectorAll(".bar");
     for(let i = 0; i < data.length; i++) {
-        let min = i;
+        let minIndex = i;
+        bars[minIndex].style.backgroundColor = "red";
         for(let j = i+1; j < data.length; j++) {
-            if(data[j] < data[min]) {
-                min = j;
+            bars[j].style.backgroundColor = "yellow";
+            await new Promise(resolve =>
+                setTimeout(() => {
+                    resolve();
+                }, speed)
+            );
+            if(parseInt(bars[j].style.height) < parseInt(bars[minIndex].style.height)) {
+                bars[minIndex].style.backgroundColor = "blue";
+                minIndex = j;
+                bars[minIndex].style.backgroundColor = "red";
+            } else {
+                bars[j].style.backgroundColor = "blue";
             }
         }
-        if(min != i) {
-            let temp = data[i];
-            data[i] = data[min];
-            data[min] = temp;
+        if(minIndex !== i) {
+            await new Promise(resolve =>
+                setTimeout(() => {
+                    let tempHeight = bars[i].style.height;
+                    bars[i].style.height = bars[minIndex].style.height;
+                    bars[minIndex].style.height = tempHeight;
+
+                    let tempContent = bars[i].textContent;
+                    bars[i].textContent = bars[minIndex].textContent;
+                    bars[minIndex].textContent = tempContent;
+
+                    let tempData = data[i];
+                    data[i] = data[minIndex];
+                    data[minIndex] = tempData;
+
+                    resolve();
+                }, speed)
+            );
         }
-        console.log(data);
-        let dat = data;
-        display(data);
-        
-        await new Promise(resolve => setTimeout(resolve, speed));
-        displaypass(dat, i + 1);
+        bars[minIndex].style.backgroundColor = "blue";
+        bars[i].style.backgroundColor = "green";
+        bars = document.querySelectorAll(".bar"); // Update the bars after each pass
+        let dat = data.slice(); // Copy the data array
+        displaypass(dat, i+1); // Display the pass
     }
 }
 
 document.getElementById('sort').addEventListener('click', async function() {
-    await selectionSort(data);
+    await selectionSort();
 });

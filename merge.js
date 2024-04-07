@@ -1,20 +1,20 @@
-var dataInput = document.getElementById('data');
+var data = document.getElementById('data');
 var heightAdjust = document.getElementById('height-adjust');
 var speedAdjust = document.getElementById('speed-adjust');
-var speed = speedAdjust.value;
-var heightMultiply = heightAdjust.value;
-var passNumber = 0;
+var speed=speedAdjust.value;
+var heightMultiply=heightAdjust.value;
+var passCounter = 0; // Add a counter for the passes
 
-heightAdjust.onchange = function() {
-    heightMultiply = this.value;
+heightAdjust.onchange=function(){
+    heightMultiply=this.value;
 }
 
-speedAdjust.onchange = function() {
-    speed = this.value;
+speedAdjust.onchange=function(){
+    speed=this.value;
 }
 
 document.getElementById('display').addEventListener('click', function() {
-    data = dataInput.value.split(',').map(Number);
+    data = data.value.split(',').map(Number);
     display(data);
 });
 
@@ -25,83 +25,97 @@ function display(data) {
         var bar = document.createElement('div');
         bar.style.height = data[i]*heightMultiply + 'px';
         bar.classList.add('bar');
-        bar.textContent = data[i];
+        bar.textContent=data[i];
         visualizer.appendChild(bar);
     }
 }
 
-function displayPass(data, passNumber) {
+function displaypass(data,passnumber) {
     var container = document.getElementById('container');
-    container.style.display = 'flex';
-    container.style.flexDirection = 'column';
-    var pass = document.createElement('div');
+    container.style.display ='flex';
+    container.style.flexDirection='column';
+    var pass=document.createElement('div');
     pass.classList.add('pass');
-    pass.style.display = 'flex';
-    pass.style.flexDirection = 'row';
-    var passNum = document.createTextNode('Pass ' + passNumber);
-    pass.appendChild(passNum);
+    pass.style.display='flex';
+    pass.style.flexDirection='row';
+    var passnum=document.createTextNode('Pass' +passnumber);
+    pass.appendChild(passnum);
     for (var i = 0; i < data.length; i++) {
         var bar = document.createElement('div');
-        bar.style.height = data[i]*heightMultiply + 'px';
+        bar.style.height = data[i]*10 + 'px';
         bar.classList.add('bar');
-        bar.textContent = data[i];
+        bar.textContent=data[i];
         pass.appendChild(bar);
+        container.appendChild(pass);
     }
-    container.appendChild(pass);
 }
 
-async function mergeSort(data) {
-    if (data.length <= 1) {
-        return data;
+async function mergeSort(low, high) {
+    if(low < high) {
+        let mid = Math.floor((low + high) / 2);
+        await mergeSort(low, mid);
+        await mergeSort(mid + 1, high);
+        await merge(low, mid, high);
     }
-    const middle = Math.floor(data.length / 2);
-    const left = data.slice(0, middle);
-    const right = data.slice(middle);
-    return await merge(await mergeSort(left), await mergeSort(right));
 }
 
-async function merge(left, right) {
-    let resultArray = [], leftIndex = 0, rightIndex = 0;
-    let visualizer = document.getElementById('visualizer');
-    let bars = visualizer.getElementsByClassName('bar');
+async function merge(low, mid, high) {
+    let bars = document.querySelectorAll(".bar");
+    let temp = [];
+    let i = low, j = mid + 1, k = 0;
 
-    while (leftIndex < left.length && rightIndex < right.length) {
-        if (left[leftIndex] < right[rightIndex]) {
-            resultArray.push(left[leftIndex]);
-            bars[leftIndex].style.height = left[leftIndex]*heightMultiply + 'px';
-            bars[leftIndex].textContent = left[leftIndex];
-            leftIndex++;
+    while(i <= mid && j <= high) {
+        bars[i].style.backgroundColor = "red";
+        bars[j].style.backgroundColor = "yellow";
+        await new Promise(resolve =>
+            setTimeout(() => {
+                resolve();
+            }, speed)
+        );
+        if(parseInt(bars[i].style.height) < parseInt(bars[j].style.height)) {
+            temp[k++] = data[i++];
         } else {
-            resultArray.push(right[rightIndex]);
-            bars[rightIndex + left.length].style.height = right[rightIndex]*heightMultiply + 'px';
-            bars[rightIndex + left.length].textContent = right[rightIndex];
-            rightIndex++;
+            temp[k++] = data[j++];
         }
-        await new Promise(resolve => setTimeout(resolve, speed));
     }
 
-    while (leftIndex < left.length) {
-        resultArray.push(left[leftIndex]);
-        bars[leftIndex].style.height = left[leftIndex]*heightMultiply + 'px';
-        bars[leftIndex].textContent = left[leftIndex];
-        leftIndex++;
-        await new Promise(resolve => setTimeout(resolve, speed));
+    while(i <= mid) {
+        bars[i].style.backgroundColor = "red";
+        await new Promise(resolve =>
+            setTimeout(() => {
+                resolve();
+            }, speed)
+        );
+        temp[k++] = data[i++];
     }
 
-    while (rightIndex < right.length) {
-        resultArray.push(right[rightIndex]);
-        bars[rightIndex + left.length].style.height = right[rightIndex]*heightMultiply + 'px';
-        bars[rightIndex + left.length].textContent = right[rightIndex];
-        rightIndex++;
-        await new Promise(resolve => setTimeout(resolve, speed));
+    while(j <= high) {
+        bars[j].style.backgroundColor = "yellow";
+        await new Promise(resolve =>
+            setTimeout(() => {
+                resolve();
+            }, speed)
+        );
+        temp[k++] = data[j++];
     }
 
-    displayPass(resultArray, passNumber++);
-    return resultArray;
+    for(let i = low; i <= high; i++) {
+        await new Promise(resolve =>
+            setTimeout(() => {
+                bars[i].style.height = temp[i - low]*heightMultiply + 'px';
+                bars[i].textContent = temp[i - low];
+                data[i] = temp[i - low];
+                resolve();
+            }, speed)
+        );
+        bars[i].style.backgroundColor = "blue";
+    }
+
+    let dat = data.slice(); // Copy the data array
+    displaypass(dat, ++passCounter); // Display the pass and increment the counter
 }
 
 document.getElementById('sort').addEventListener('click', async function() {
-    var data = dataInput.value.split(',').map(Number);
-    data = await mergeSort(data);
-    display(data);
+    passCounter = 0; // Reset the counter before each sort
+    await mergeSort(0, data.length - 1);
 });
