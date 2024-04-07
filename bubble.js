@@ -49,27 +49,43 @@ function displaypass(data,passnumber) {
     }
 }
 
-async function bubblesort(data) {
-    for(let i = data.length; i >= 1; i--) {
-        for(let j = 1; j <= i; j++) {
-            if(data[j-1] > data[j]) {
-                let temp = data[j-1];
-                data[j-1] = data[j];
-                data[j] = temp;
+async function bubblesort() {
+    let bars = document.querySelectorAll(".bar");
+    for(let i = 0; i < data.length; i++) {
+        for(let j = 0; j < data.length - i - 1; j++) {
+            bars[j].style.backgroundColor = "red";
+            bars[j+1].style.backgroundColor = "yellow";
+            if(parseInt(bars[j].style.height) > parseInt(bars[j+1].style.height)) {
+                await new Promise(resolve =>
+                    setTimeout(() => {
+                        let tempHeight = bars[j].style.height;
+                        bars[j].style.height = bars[j+1].style.height;
+                        bars[j+1].style.height = tempHeight;
+
+                        let tempContent = bars[j].textContent;
+                        bars[j].textContent = bars[j+1].textContent;
+                        bars[j+1].textContent = tempContent;
+
+                        let tempData = data[j];
+                        data[j] = data[j+1];
+                        data[j+1] = tempData;
+
+                        resolve();
+                    }, speed)
+                );
             }
+            bars[j].style.backgroundColor = "blue";
         }
-        console.log(data);
-        let dat=data;
-        display(data);
-        
-        await new Promise(resolve => setTimeout(resolve, speed));
-        displaypass(dat,data.length - i +1);
-        
+        bars[data.length - i - 1].style.backgroundColor = "green";
+        bars = document.querySelectorAll(".bar"); // Update the bars after each pass
+        let dat = data.slice(); // Copy the data array
+        displaypass(dat, i+1); // Display the pass
     }
 }
 
+
 document.getElementById('sort').addEventListener('click', async function() {
-    await bubblesort(data);
+    await bubblesort();
 });
 
 
