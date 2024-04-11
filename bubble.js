@@ -4,8 +4,8 @@ var speedAdjust = document.getElementById('speed-adjust');
 var speed=speedAdjust.value;
 var heightMultiply=heightAdjust.value;
 
-heightAdjust.onchange=function(){
-    heightMultiply.value
+heightAdjust.onchange = function() {
+    heightMultiply = this.value;
 }
 
 speedAdjust.onchange=function(){
