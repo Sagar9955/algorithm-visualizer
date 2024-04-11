@@ -4,28 +4,47 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=<device-width>, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="style.css" />
+    <style>
+      body {
+        background-color: #f5f5dc; /* Cream color */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+      #heading {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        text-align: center;
+      }
+      #containerbutton {
+        text-align: center;
+      }
+      #button {
+        height: 100px;
+        width: 100px;
+        border-radius: 50px;
+        border: none;
+      }
+      #button a {
+        text-decoration: none;
+      }
+    </style>
   </head>
   <body>
+    <div id="heading">
+      <h1>Select the sorting algorithm</h1>
+    </div>
     <div id="containerbutton">
-      <a href="bubble.html">
-        <button id="button">Bubble Sort</button>
-      </a>
-      <a href="merge.html">
-        <button id="button">Merge Sort</button>
-      </a>
-      <a href="insertion.html">
-        <button id="button">Insertion Sort</button>
-      </a>
-      <a href="selection.html">
-        <button id="button">Selection Sort</button>
-      </a>
-      <a href="quick.html">
-        <button id="button">Quick Sort</button>
-      </a>
-      <a href="heap.html">
-        <button id="button">Heap Sort</button>
-      </a>
+      <button id="button"><a href="bubble.html">Bubble Sort</a></button>
+      <button id="button"><a href="merge.html">Merge Sort</a></button>
+      <button id="button"><a href="insertion.html">Insertion Sort</a></button>
+      <button id="button"><a href="selection.html">Selection Sort</a></button>
+      <button id="button"><a href="quick.html">Quick Sort</a></button>
+      <button id="button"><a href="heap.html">Heap Sort</a></button>
     </div>
   </body>
 </html>

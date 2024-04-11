@@ -37,6 +37,21 @@
         moved to the rightmost end at first. This process is then continued to
         find the second largest and place it and so on until the data is sorted.
       </p>
+      <p>Here’s a step-by-step explanation:</p>
+      <li>
+        Step 1: Compare the first and the second element of the list. If the
+        first element is greater than the second element, swap them.
+      </li>
+      <li>
+        Step 2: Move to the next pair of elements, compare their values and swap
+        them if required. This step is repeated until the end of the list.
+      </li>
+      <li>
+        Step 3: At this point, the highest value in the list would have bubbled
+        up to the end of the list. Repeat the steps 1 and 2 for the rest of the
+        list (i.e., the first n-1 elements).
+      </li>
+      <li>Step 4: Repeat steps 1 to 3 until no more swaps are needed.</li>
       <h4>Complexity</h4>
       <p>Time Complexity:</p>
 
@@ -66,7 +81,7 @@
         It is a stable sorting algorithm, meaning that elements with the same
         key value maintain their relative order in the sorted output
       </li>
-      <h4>Disadvantaged:</h4>
+      <h4>Disadvantages:</h4>
       <li>
         Bubble sort has a time complexity of O(n²) which makes it very slow for
         large data sets.

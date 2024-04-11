@@ -24,58 +24,85 @@
     <div id="visualizer"></div>
     <div id="container"></div>
     <div id="information">
-      <h4>Bubble Sort</h4>
+      <h4>Selection Sort</h4>
       <p>
-        Bubble Sort is a simple yet effective sorting algorithm. Here’s a
-        detailed explanation: How it Works: Bubble Sort works by repeatedly
-        stepping through the list, compares adjacent elements, and swaps them if
-        they are in the wrong order. The pass through the list is repeated until
-        the list is sorted. The algorithm gets its name from the way smaller
-        elements “bubble” to the top of the list. Algorithm: In Bubble Sort
-        algorithm, we traverse from left and compare adjacent elements and the
-        higher one is placed at right side. In this way, the largest element is
-        moved to the rightmost end at first. This process is then continued to
-        find the second largest and place it and so on until the data is sorted.
+        Selection sort is a simple, comparison-based sorting algorithm. The
+        process begins by identifying the smallest element in the list and
+        swapping it with the first element, effectively moving the smallest
+        element to its correct position at the start of the list. This part of
+        the list is then considered sorted. The process is repeated, starting
+        from the next unsorted element, each time finding the smallest unsorted
+        element and swapping it with the first unsorted element. This continues
+        until all elements have been covered and the entire list is sorted. The
+        key idea behind selection sort is performing the minimum number of swaps
+        necessary to sort the list, which is what makes it efficient for lists
+        where swapping elements is a costly operation. However, it’s worth
+        noting that selection sort isn’t generally suitable for large lists due
+        to its quadratic time complexity.
       </p>
+
+      <p>Here’s a step-by-step explanation:</p>
+      <li>
+        Step 1 - Find the Minimum Element: Start from the first element and go
+        through the list to find the smallest element. The goal is to find the
+        minimum element in the main list.
+      </li>
+      <li>
+        Step 2 - Swap: Once the minimum element is found, swap it with the first
+        element of the main list. Now, the smallest element is at the first
+        position, and it’s considered sorted.
+      </li>
+      <li>
+        Step 3 - Iterate: Move to the next element and repeat the process until
+        the entire list is sorted.
+      </li>
+
       <h4>Complexity</h4>
       <p>Time Complexity:</p>
 
-      <li>
-        Best Case: The best case occurs when the array is already sorted. In
-        this case, the time complexity is O(N), where N is the number of
-        elements in the array.
-      </li>
-      <li>
-        Worst Case: The worst case occurs when the array is sorted in reverse
-        order. In this case, the time complexity is O(N²).
-      </li>
-      <li>
-        Average Case: On average, Bubble Sort has a time complexity of O(N²),
-        regardless of the arrangement of elements in the input array.
-      </li>
+      <p>
+        The time complexity of selection sort is O(n^2) for all cases (best
+        case, average case, and worst case). This is because it always performs
+        n(n-1)/2 comparisons regardless of the input order.
+      </p>
       <p>Space Complexity:</p>
       <p>
-        Bubble Sort is an in-place sorting algorithm, meaning it doesn’t require
-        additional memory to perform the sorting. Hence, its space complexity is
-        O(1).
+        The space complexity of selection sort is O(1). This is because it is an
+        in-place sorting algorithm and does not require any extra space apart
+        from a temporary variable used for swapping elements.
       </p>
       <h4>Advantages</h4>
-      <li>Bubble sort is easy to understand and implement.</li>
-      <li>It does not require any additional memory space.</li>
       <li>
-        It is a stable sorting algorithm, meaning that elements with the same
-        key value maintain their relative order in the sorted output
-      </li>
-      <h4>Disadvantaged:</h4>
-      <li>
-        Bubble sort has a time complexity of O(n²) which makes it very slow for
-        large data sets.
+        Simplicity: Selection sort is a simple algorithm that’s easy to
+        understand and implement. It’s an excellent choice for small lists or
+        for educational purposes to understand how sorting works.
       </li>
       <li>
-        Bubble sort is a comparison-based sorting algorithm, which means that it
-        requires a comparison operator to determine the relative order of
-        elements in the input data set. It can limit the efficiency of the
-        algorithm in certain cases.
+        In-place Sorting: It is an in-place sorting algorithm. This means it
+        does not require any extra space to sort the list, making it space
+        efficient.
+      </li>
+      <li>
+        Performance: It performs well on items that have a high cost of swapping
+        elements, as it minimizes the total number of swaps. For each complete
+        pass through the list, it makes at most one swap.
+      </li>
+      <h4>Disadvantages:</h4>
+      <li>
+        Efficiency: Selection sort has a time complexity of O(n^2), which makes
+        it inefficient for large lists. The time taken to sort increases
+        quadratically with the number of inputs, so it’s not suitable for large
+        datasets.
+      </li>
+      <li>
+        Adaptivity: Selection sort does not adapt to the data in any way, so its
+        runtime is always quadratic, regardless of the initial order of the
+        list. It performs poorly for lists that are already sorted or nearly
+        sorted.
+      </li>
+      <li>
+        Stability: Selection sort is not a stable sort. This means that equal
+        elements may not retain their relative order in the sorted list.
       </li>
     </div>
     <div

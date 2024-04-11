@@ -24,58 +24,109 @@
     <div id="visualizer"></div>
     <div id="container"></div>
     <div id="information">
-      <h4>Bubble Sort</h4>
+      <h4>Insertion Sort</h4>
       <p>
-        Bubble Sort is a simple yet effective sorting algorithm. Here’s a
-        detailed explanation: How it Works: Bubble Sort works by repeatedly
-        stepping through the list, compares adjacent elements, and swaps them if
-        they are in the wrong order. The pass through the list is repeated until
-        the list is sorted. The algorithm gets its name from the way smaller
-        elements “bubble” to the top of the list. Algorithm: In Bubble Sort
-        algorithm, we traverse from left and compare adjacent elements and the
-        higher one is placed at right side. In this way, the largest element is
-        moved to the rightmost end at first. This process is then continued to
-        find the second largest and place it and so on until the data is sorted.
+        Insertion Sort is a straightforward and intuitive sorting algorithm. It
+        operates by dividing the input into a sorted and an unsorted region, and
+        iteratively shrinks the unsorted region by extracting one element at a
+        time and inserting it into the sorted region, at the correct position
+        each time. At the start of the process, the sorted region consists of
+        only the first element of the input, and the unsorted region contains
+        the rest. The algorithm then proceeds by selecting an element from the
+        unsorted region and ‘inserting’ it at the appropriate position in the
+        sorted region. This ‘insertion’ is done by moving all elements in the
+        sorted region that are greater than the element being inserted, one
+        position to the right, and then placing the element at the now vacant
+        position. This process is repeated, with the sorted region gradually
+        expanding and the unsorted region correspondingly shrinking, until the
+        unsorted region is empty, indicating that the input is now fully sorted.
+        The algorithm gets its name from this ‘insertion’ process, which is akin
+        to how a human might sort a hand of playing cards, by repeatedly picking
+        a card and inserting it at the right place among the already sorted
+        cards in hand.
       </p>
+
+      <p>Here’s a step-by-step explanation:</p>
+      <li>
+        Step 1: The first element in the array is considered as sorted (i.e.,
+        the sorted portion of the array is initially of size 1).
+      </li>
+      <li>
+        Step 2: We then go to the next element in the array. This is the first
+        element in the unsorted portion of the array.
+      </li>
+      <li>
+        Step 3: If this element is greater than the element before it, it
+        remains in its place and we move to the next element.
+      </li>
+      <li>
+        Step 4: If this element is less than the element before it, we compare
+        it with elements from the sorted portion of the array (from right to
+        left), moving them one step to the right until we find an element lesser
+        than the current element or reach the beginning of the array.
+      </li>
+      <li>Step 5: We then insert the element in this position.</li>
+      <li>Step 6: Repeat steps 2-5 until the array is sorted.</li>
+
       <h4>Complexity</h4>
       <p>Time Complexity:</p>
 
       <li>
-        Best Case: The best case occurs when the array is already sorted. In
-        this case, the time complexity is O(N), where N is the number of
-        elements in the array.
+        Best Case: The best case occurs when the input array is already sorted.
+        In this case, the time complexity is O(n), where n is the number of
+        elements in the array. This is because, for each element, the algorithm
+        only needs to make one comparison.
       </li>
       <li>
-        Worst Case: The worst case occurs when the array is sorted in reverse
-        order. In this case, the time complexity is O(N²).
+        Worst Case: The worst case occurs when the input array is sorted in
+        reverse order. In this case, the time complexity is O(n2) , as each
+        insertion operation can take up to n comparisons and swaps.
       </li>
-      <li>
-        Average Case: On average, Bubble Sort has a time complexity of O(N²),
-        regardless of the arrangement of elements in the input array.
-      </li>
+      <li>Average Case: On average, the time complexity is also O(n2)</li>
       <p>Space Complexity:</p>
       <p>
-        Bubble Sort is an in-place sorting algorithm, meaning it doesn’t require
-        additional memory to perform the sorting. Hence, its space complexity is
-        O(1).
+        The space complexity of Insertion Sort is O(1) , which means it requires
+        a constant amount of additional space. This is because it is an in-place
+        sorting algorithm, i.e., it doesn’t require any extra space apart from
+        the space needed to hold the input array.
       </p>
       <h4>Advantages</h4>
-      <li>Bubble sort is easy to understand and implement.</li>
-      <li>It does not require any additional memory space.</li>
       <li>
-        It is a stable sorting algorithm, meaning that elements with the same
-        key value maintain their relative order in the sorted output
-      </li>
-      <h4>Disadvantaged:</h4>
-      <li>
-        Bubble sort has a time complexity of O(n²) which makes it very slow for
-        large data sets.
+        Simple Implementation: Insertion sort is straightforward to understand
+        and implement.
       </li>
       <li>
-        Bubble sort is a comparison-based sorting algorithm, which means that it
-        requires a comparison operator to determine the relative order of
-        elements in the input data set. It can limit the efficiency of the
-        algorithm in certain cases.
+        Efficient for Small Lists: For small datasets, insertion sort can be
+        more efficient than more complex algorithms such as Quick Sort or Merge
+        Sort.
+      </li>
+      <li>
+        Insertion sort is adaptive, meaning it is efficient for data sets that
+        are already substantially sorted. The time complexity is linear, i.e.,
+        O(n), when the input array is already sorted.
+      </li>
+      <li>
+        Stable: Insertion sort is stable. It maintains the relative order of
+        equal elements in the sorted output.
+      </li>
+      <li>
+        In-Place: It is an in-place sorting algorithm as it requires a constant
+        amount of additional space.
+      </li>
+      <h4>Disadvantages:</h4>
+      <li>
+        Inefficient for Large Lists: Insertion sort has a worst-case and average
+        time complexity of O(n2) , where n is the number of items being sorted.
+        Hence, it is not suitable for large datasets.
+      </li>
+      <li>
+        Number of Swaps: Insertion sort involves more swaps as compared to other
+        sorting algorithms.
+      </li>
+      <li>
+        Dependent on the Initial Order of Elements: The efficiency of the
+        insertion sort algorithm significantly depends on the initial ordering
+        of the elements in the input array.
       </li>
     </div>
     <div

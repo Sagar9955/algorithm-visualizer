@@ -24,65 +24,112 @@
     <div id="visualizer"></div>
     <div id="container"></div>
     <div id="information">
-      <h4>Bubble Sort</h4>
+      <h4>Heap Sort</h4>
       <p>
-        Bubble Sort is a simple yet effective sorting algorithm. Here’s a
-        detailed explanation: How it Works: Bubble Sort works by repeatedly
-        stepping through the list, compares adjacent elements, and swaps them if
-        they are in the wrong order. The pass through the list is repeated until
-        the list is sorted. The algorithm gets its name from the way smaller
-        elements “bubble” to the top of the list. Algorithm: In Bubble Sort
-        algorithm, we traverse from left and compare adjacent elements and the
-        higher one is placed at right side. In this way, the largest element is
-        moved to the rightmost end at first. This process is then continued to
-        find the second largest and place it and so on until the data is sorted.
+        Heap sort is a comparison-based sorting algorithm that uses a binary
+        heap data structure. The process begins by transforming the list of
+        items into a max heap, which is a binary tree where the parent node is
+        always larger than its child nodes. This transformation is usually done
+        using an algorithm called “heapify”. The heapify process involves
+        comparing each node with its children and swapping them if the child
+        node is larger. This process continues moving up the tree until the
+        parent node is larger than both child nodes or the node becomes a leaf
+        node. Once the heap is created, the root node, which is the largest
+        element in the heap, is swapped with the last element of the heap. This
+        moves the maximum element to the end of the list, placing it in its
+        correct final position, and the heap size is reduced by one element. The
+        heapify process is then repeated for the remaining heap, and the sorting
+        process is repeated for the remaining unsorted elements. This continues
+        until all the elements in the heap are sorted.
       </p>
+
+      <p>Here’s a step-by-step explanation:</p>
+      <li>
+        Step 1: Start by turning your array into a binary heap. A binary heap is
+        a nearly complete binary tree which satisfies the heap property. In case
+        of a max heap, for any given node I, the value of I is greater than or
+        equal to the values of its children.
+      </li>
+      <li>
+        Step 2: If the heap property is violated, i.e., if any parent node is
+        less than its child node, swap them. Continue this process for all
+        nodes, starting from the last internal node, and move upwards in the
+        tree.
+      </li>
+      <li>
+        Step 3: Now that the largest element is at the root of the heap, remove
+        it and put it at the end of the array. Remember, you are sorting in
+        increasing order, so the largest element should be at the end of the
+        array.
+      </li>
+      <li>
+        Step 4: Repeat the process for the remaining elements in the heap. The
+        size of the heap gets reduced by one with each iteration as the largest
+        elements get sorted and moved to the end of the array.
+      </li>
+      <li>
+        Step 5: Iterate until the heap is empty: Continue the process until all
+        the elements are removed from the heap. At this point, the array is
+        sorted.
+      </li>
+
       <h4>Complexity</h4>
       <p>Time Complexity:</p>
-
-      <li>
-        Best Case: The best case occurs when the array is already sorted. In
-        this case, the time complexity is O(N), where N is the number of
-        elements in the array.
-      </li>
-      <li>
-        Worst Case: The worst case occurs when the array is sorted in reverse
-        order. In this case, the time complexity is O(N²).
-      </li>
-      <li>
-        Average Case: On average, Bubble Sort has a time complexity of O(N²),
-        regardless of the arrangement of elements in the input array.
-      </li>
+      <p>
+        The time complexity of Heap Sort is O(nlogn) in all cases, where n is
+        the number of elements in the array. This is because the heapify
+        operation, which is used to maintain the heap property, takes
+        logarithmic time, and we perform this operation n times.
+      </p>
       <p>Space Complexity:</p>
       <p>
-        Bubble Sort is an in-place sorting algorithm, meaning it doesn’t require
-        additional memory to perform the sorting. Hence, its space complexity is
-        O(1).
+        Space Complexity: The space complexity of Heap Sort is O(1) . This is
+        because Heap Sort is an in-place sorting algorithm, meaning it does not
+        require any additional storage space apart from the space needed to
+        store the input array. This makes Heap Sort particularly useful when
+        dealing with large datasets that don’t fit into memory. However, it’s
+        worth noting that Heap Sort is not a stable sort, meaning that equal
+        elements may not retain their relative order in the sorted array.
       </p>
       <h4>Advantages</h4>
-      <li>Bubble sort is easy to understand and implement.</li>
-      <li>It does not require any additional memory space.</li>
       <li>
-        It is a stable sorting algorithm, meaning that elements with the same
-        key value maintain their relative order in the sorted output
-      </li>
-      <h4>Disadvantaged:</h4>
-      <li>
-        Bubble sort has a time complexity of O(n²) which makes it very slow for
-        large data sets.
+        Efficient: Heap Sort is very efficient with a time complexity of
+        O(nlogn) in all cases, which is as good as sorting algorithms can
+        achieve.
       </li>
       <li>
-        Bubble sort is a comparison-based sorting algorithm, which means that it
-        requires a comparison operator to determine the relative order of
-        elements in the input data set. It can limit the efficiency of the
-        algorithm in certain cases.
+        In-Place Sorting: Heap Sort is an in-place sorting algorithm, meaning it
+        does not require any additional storage space apart from the space
+        needed to store the input array. This makes it particularly useful when
+        dealing with large datasets that don’t fit into memory.
+      </li>
+      <li>
+        No Recursion: Unlike Quick Sort and Merge Sort, Heap Sort does not use
+        recursion, so there are no additional function call overheads.
+      </li>
+      <h4>Disadvantages:</h4>
+      <li>
+        Not Stable: Heap Sort is not a stable sort, meaning that equal elements
+        may not retain their relative order in the sorted array.
+      </li>
+      <li>
+        Not Adaptive: Heap Sort is not adaptive, meaning it doesn’t take
+        advantage of existing order in an input array. It performs the same
+        number of operations whether the input is already sorted, reverse
+        sorted, or random.
+      </li>
+
+      <li>
+        Complex Implementation: The implementation of Heap Sort is more complex
+        compared to other sorting algorithms like Bubble Sort or Insertion Sort.
+        This can make it harder to understand and use in practice.
       </li>
     </div>
     <div
       id="ide"
       data-pym-src="https://www.jdoodle.com/embed/v0/2IhG?stdin=1&arg=0"
     ></div>
-    <script src="heap.js"></script>
+    <script src="insertion.js"></script>
     <script
       src="https://www.jdoodle.com/assets/jdoodle-pym.min.js"
       type="text/javascript"

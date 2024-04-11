@@ -24,58 +24,125 @@
     <div id="visualizer"></div>
     <div id="container"></div>
     <div id="information">
-      <h4>Bubble Sort</h4>
+      <h4>Quick Sort</h4>
       <p>
-        Bubble Sort is a simple yet effective sorting algorithm. Here’s a
-        detailed explanation: How it Works: Bubble Sort works by repeatedly
-        stepping through the list, compares adjacent elements, and swaps them if
-        they are in the wrong order. The pass through the list is repeated until
-        the list is sorted. The algorithm gets its name from the way smaller
-        elements “bubble” to the top of the list. Algorithm: In Bubble Sort
-        algorithm, we traverse from left and compare adjacent elements and the
-        higher one is placed at right side. In this way, the largest element is
-        moved to the rightmost end at first. This process is then continued to
-        find the second largest and place it and so on until the data is sorted.
+        QuickSort is a highly efficient sorting algorithm and is based on the
+        concept of “Divide and Conquer”. It was developed by British computer
+        scientist Tony Hoare in 1959. The algorithm works by selecting a ‘pivot’
+        element from the array and partitioning the other elements into two
+        sub-arrays, according to whether they are less than or greater than the
+        pivot.The beauty of QuickSort lies in the partitioning step. At the end
+        of the partitioning, we are guaranteed that the pivot is in its correct
+        place and we don’t need to move it anymore. This gives us the
+        opportunity to sort the remaining two partitions independently. The
+        efficiency of QuickSort is highly dependent on the method used for
+        partitioning the array. If the pivot is consistently the smallest (or
+        largest) element, then each partition only eliminates one element, and
+        the algorithm degrades to a simple selection sort.
       </p>
+
+      <p>Here’s a step-by-step explanation:</p>
+      <li>
+        Step 1 - Choose the Pivot: We start by choosing a pivot element from the
+        array. The pivot can be any element from the array - the first element,
+        the last element, the median, or any random element.
+      </li>
+      <li>
+        Step 2 - Partition the Array: Next, we partition the array. The
+        partitioning process rearranges the array so that all elements less than
+        the pivot are placed before it and all elements greater than the pivot
+        are placed after it. After this step, the pivot is in its final
+        position.
+      </li>
+      <li>
+        Partitioning Step 1: We start with two pointers: i and j. The i pointer
+        starts at the first element in the array and the j pointer starts at the
+        last element in the array.
+      </li>
+      <li>
+        Partitioning Step 2: We increment i until we find an element greater
+        than the pivot and we decrement j until we find an element less than the
+        pivot.
+      </li>
+      <li>
+        Partitioning Step 3: If i is less than j, we swap the elements at i and
+        j.
+      </li>
+      <li>
+        Partitioning Step 4: We repeat the process until i is not less than j.
+        At this point, all elements to the left of i are less than the pivot and
+        all elements to the right are greater than the pivot.
+      </li>
+      <li>
+        Step 3 - Recurse on Sub-arrays: Now, we have two sub-arrays - one with
+        elements less than the pivot and one with elements greater than the
+        pivot. We recursively apply the same process to these two sub-arrays.
+      </li>
       <h4>Complexity</h4>
       <p>Time Complexity:</p>
 
       <li>
-        Best Case: The best case occurs when the array is already sorted. In
-        this case, the time complexity is O(N), where N is the number of
-        elements in the array.
+        Best Case: The best case occurs when the partition process always picks
+        the middle element as pivot. The time complexity in this case is
+        O(nlogn)
       </li>
       <li>
-        Worst Case: The worst case occurs when the array is sorted in reverse
-        order. In this case, the time complexity is O(N²).
+        Worst Case: The worst case occurs when the partition process always
+        picks the greatest or smallest element as pivot. If this happens, we do
+        not divide the array in half and end up with an unbalanced partition. As
+        a result, the time complexity degrades to O(n2) .
       </li>
       <li>
-        Average Case: On average, Bubble Sort has a time complexity of O(N²),
-        regardless of the arrangement of elements in the input array.
+        Average Case: Even in the average case, QuickSort has a time complexity
+        of O(nlogn) .
       </li>
       <p>Space Complexity:</p>
       <p>
-        Bubble Sort is an in-place sorting algorithm, meaning it doesn’t require
-        additional memory to perform the sorting. Hence, its space complexity is
-        O(1).
+        The space complexity of QuickSort is O(logn) . This is because QuickSort
+        is a recursive algorithm and it requires additional space for the call
+        stack. In the worst case, the maximum depth of the recursive tree is n
+        and in the best case, it is logn . Please note that while QuickSort is
+        very efficient in terms of time complexity, the worst-case scenario can
+        be quite bad if the pivot elements are not chosen wisely. This is why
+        many implementations use a randomized version of QuickSort that ensures
+        a good pivot on average, resulting in a time complexity of O(nlogn) in
+        all cases.
       </p>
       <h4>Advantages</h4>
-      <li>Bubble sort is easy to understand and implement.</li>
-      <li>It does not require any additional memory space.</li>
       <li>
-        It is a stable sorting algorithm, meaning that elements with the same
-        key value maintain their relative order in the sorted output
-      </li>
-      <h4>Disadvantaged:</h4>
-      <li>
-        Bubble sort has a time complexity of O(n²) which makes it very slow for
-        large data sets.
+        Efficiency: QuickSort is one of the most efficient sorting algorithms,
+        with an average and best-case time complexity of O(nlogn) . This makes
+        it a good choice for large datasets.
       </li>
       <li>
-        Bubble sort is a comparison-based sorting algorithm, which means that it
-        requires a comparison operator to determine the relative order of
-        elements in the input data set. It can limit the efficiency of the
-        algorithm in certain cases.
+        In-Place Sorting: QuickSort is an in-place sorting algorithm. This means
+        it sorts the elements directly in the array without needing to create
+        additional arrays, which saves memory.
+      </li>
+      <li>
+        Locality of Reference: QuickSort has good cache performance as it has
+        good locality of reference when dealing with arrays.
+      </li>
+      <li>
+        Parallelizable: QuickSort is parallelizable because it works on the
+        divide-and-conquer principle. It can work on both partitions
+        independently, which makes it suitable for parallel execution.
+      </li>
+      <h4>Disadvantages:</h4>
+      <li>
+        Worst-Case Time Complexity: The worst-case time complexity of QuickSort
+        is O(n2) . This can happen when the pivot is the smallest or largest
+        element of the array, or in cases of already sorted or nearly sorted
+        arrays.
+      </li>
+      <li>
+        Unstable: QuickSort is an unstable sorting algorithm. This means that
+        equal elements may not retain their original order after sorting.
+      </li>
+      <li>
+        Recursion Overhead: As QuickSort is a recursive algorithm, it can have a
+        high recursion overhead for large arrays or for arrays with many
+        duplicate elements.
       </li>
     </div>
     <div
