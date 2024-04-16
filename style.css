@@ -5,6 +5,7 @@
 body{
     margin: 0;
     padding: 0;
+    background-color: #F3E8E2;
 }
 h1{
     padding-top: 15px;
@@ -12,7 +13,8 @@ h1{
 }
 #heading{
     margin-top: 0px;
-    background-color: black;
+    background-color:#191818;
+    
     color: white;
     height: 100px;
     width: 100%;
@@ -62,9 +64,10 @@ h1{
 }
 #ide{
     padding-top: 25px;
-    padding-left: 300px;
+    padding-left: 225px;
     height: 200px;
     width: 900px;
+    border-radius: 10px;
 }
 #information{
     padding-left: 225px;

@@ -54,9 +54,9 @@ async function partition(low, high) {
     let bars = document.querySelectorAll(".bar");
     let pivot = parseInt(bars[high].style.height);
     let i = low - 1;
-    bars[high].style.backgroundColor = "red";
+    bars[high].style.backgroundColor = "red"; // Pivot element becomes red
     for(let j = low; j <= high - 1; j++) {
-        bars[j].style.backgroundColor = "yellow";
+        bars[j].style.backgroundColor = "orange"; // Left side becomes orange
         await new Promise(resolve =>
             setTimeout(() => {
                 resolve();
@@ -76,7 +76,7 @@ async function partition(low, high) {
             data[i] = data[j];
             data[j] = tempData;
         }
-        bars[j].style.backgroundColor = "blue";
+        bars[j].style.backgroundColor = "blue"; // Right side becomes blue
     }
     let tempHeight = bars[i+1].style.height;
     bars[i+1].style.height = bars[high].style.height;
@@ -90,8 +90,8 @@ async function partition(low, high) {
     data[i+1] = data[high];
     data[high] = tempData;
 
-    bars[high].style.backgroundColor = "blue";
-    bars[i+1].style.backgroundColor = "green";
+    bars[high].style.backgroundColor = "blue"; // Right side remains blue
+    bars[i+1].style.backgroundColor = "green"; // Sorted elements become green
 
     let dat = data.slice(); // Copy the data array
     displaypass(dat, passnumber); // Display the pass
@@ -99,6 +99,7 @@ async function partition(low, high) {
 
     return (i + 1);
 }
+
 
 async function quickSort(low, high) {
     if(low < high) {
